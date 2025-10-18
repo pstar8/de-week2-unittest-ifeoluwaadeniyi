@@ -24,7 +24,7 @@ class ArtificialPancreasSystem:
         """Predict and apply an appropriate system action. Acts like a decision function in a model."""
         if self.glucose_level > self.target_glucose + self.tolerance:
             excess_glucose = self.glucose_level - self.target_glucose
-            insulin_dose = excess_glucose / self.insulin_sensitivity
+            insulin_dose = excess_glucose / self.insulin_sensitivity            
             self.glucose_level -= insulin_dose
             self.total_insulin_delivered += insulin_dose
             return("deliver_insulin", self.glucose_level)
@@ -32,4 +32,3 @@ class ArtificialPancreasSystem:
             return("warn_low_glucose", self.glucose_level)
         else:
             return("maintain", self.glucose_level)
-
